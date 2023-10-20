@@ -7,7 +7,7 @@ interface CharacterListProps {
 
 const CharacterList = ({ data }: CharacterListProps) => {
   return (
-    <ul className="grid lg:grid-cols-4 gap-12 mt-12">
+    <ul className="grid md:grid-cols-3 lg:grid-cols-4 gap-12 mt-12">
       {data.map((character) => {
         return (
           <li
