@@ -7,9 +7,11 @@ module.exports = {
         "main-green": "#9fded5",
         "main-green-dark": "#71A494",
         "blue-soft": "#b2daed",
+        "blue-dark": "#31505e",
         "brown-soft": "d5c8b8",
         "brown-dark": "#70592d",
-        "main-grey": "#303032",
+        "violet-soft": "#705667",
+        "grey-dark": "#303032",
       },
       fontFamily: {
         custom: ['"Indie Flower"', "sans"], // Reemplaza "Font Name" con el nombre de la fuente de Google Fonts
