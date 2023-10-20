@@ -19,7 +19,11 @@ code {
 /* Fonts */
 @import url('https://fonts.googleapis.com/css2?family=Indie+Flower');
 
+html {
+  font-size: 20px; 
+}
+
 body {
-  font-size: 22px;
+  /* font-size: 22px; */
   font-family: 'Indie Flower'
 }

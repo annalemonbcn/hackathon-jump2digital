@@ -1,7 +1,7 @@
 import React from "react";
 
 // Types
-import { Character } from "../types";
+import { Character } from "../../types";
 
 // Router
 import { Link } from "react-router-dom";
