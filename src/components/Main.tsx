@@ -1,5 +1,10 @@
+// Hooks
 import { useEffect, useState } from "react";
+
+// Types
 import { Character } from "../types";
+
+// Components
 import CharacterList from "./CharacterList";
 
 const INITIAL_STATE = [
@@ -83,10 +88,9 @@ const Main = () => {
   }, []);
 
   return (
-    <div className="mt-10 main">
-      <h1 className="text-2xl font-custom font-bold title">Characters list:</h1>
+    <main className="mt-10">
       <CharacterList data={characters} />
-    </div>
+    </main>
   );
 };
 

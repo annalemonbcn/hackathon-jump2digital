@@ -14,6 +14,9 @@ module.exports = {
       fontFamily: {
         custom: ['"Indie Flower"', "sans"], // Reemplaza "Font Name" con el nombre de la fuente de Google Fonts
       },
+      screens: {
+        'xs': '512px',
+      }
     },
   },
   plugins: [],
