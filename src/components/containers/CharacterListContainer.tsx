@@ -1,5 +1,5 @@
 // Hooks
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
 
 // Types
 import { Character } from "../../types";
@@ -7,19 +7,25 @@ import { Character } from "../../types";
 // Components
 import CharacterListView from "../views/CharacterListView";
 
-// Services
-import { getAllCharacters } from "../../services/getAllCharacters";
+// Context
+import { CharactersContext } from "../../api/context/CharactersProvider";
+
 
 const CharacterListContainer = () => {
+  // State
   const [characters, setCharacters] = useState<Array<Character>>([]);
 
-  useEffect(() => {
-    // Call the getAllCharacters method and set the processed response
-    getAllCharacters().then(setCharacters);
-    // TODO: catch!
-  }, []);
+  // Context
+  const charactersContext = useContext(CharactersContext);
 
-  if (characters) {
+  useEffect(() => {
+    // Check if charactersContext exist
+    if (charactersContext && charactersContext.allCharacters) {
+      setCharacters(charactersContext.allCharacters);
+    }
+  }, [charactersContext]);
+
+  if (characters.length > 0) {
     return <CharacterListView data={characters} />;
   }
   return <p>Loading...</p>;
