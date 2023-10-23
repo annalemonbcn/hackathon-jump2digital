@@ -18,12 +18,21 @@ code {
 
 /* Fonts */
 @import url('https://fonts.googleapis.com/css2?family=Indie+Flower');
-
+  @import url('https://fonts.googleapis.com/css2?family=Arimo&display=swap');
 html {
   font-size: 20px; 
+}
+@media(min-width: 768px){
+  html {
+    font-size: 18px;
+  }
 }
 
 body {
   /* font-size: 22px; */
-  font-family: 'Indie Flower'
+  font-family: 'Indie Flower';
+}
+
+footer{
+  font-family: 'Arimo';
 }
