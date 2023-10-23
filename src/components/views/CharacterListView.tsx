@@ -21,7 +21,7 @@ const CharacterList = ({ data }: CharacterListProps) => {
             <Link
               to={`/id/${character.id}`}
               key={character.id}
-              className="flex flex-col items-center border-4 border-amber-400 rounded-md bg-main-green py-6"
+              className="flex flex-col items-center border-4 border-amber-400 rounded-md bg-blue-soft py-6"
             >
               <img
                 className="rounded-full h-auto w-1/2 -mt-12"
