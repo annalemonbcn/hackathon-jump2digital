@@ -1,5 +1,5 @@
 // Types
-import { Character, ResponseFromApi } from "../../types";
+import { ResponseFromApi } from "../../types";
 
 // Services
 import { mapFromApiToCharacters } from "./getAllCharacters";
