@@ -1,35 +1,38 @@
 // Hooks
 import { useEffect, useState } from "react";
 
+// Router
+import { useParams } from "react-router-dom";
+
 // Types
 import { Character } from "../../types";
+
+// Services
+import { getSingleCharacter } from "../../services/getSingleCharacter";
+
+// Components
 import SingleCharacterView from "../views/SingleCharacterView";
 
-// FAKE DATA
-const INITIAL_STATE = {
-  id: -1,
-  name: "Rick",
-  status: "Alive",
-  species: "Human",
-  type: "",
-  gender: "Male",
-  origin: {
-    name: "Earth (C-137)",
-    url: "",
-  },
-  image: "https://rickandmortyapi.com/api/character/avatar/1.jpeg",
-  url: "https://rickandmortyapi.com/api/character/1"
-}
-
 const SingleCharacterContainer = () => {
-  const [character, setCharacter] = useState<Character>(INITIAL_STATE);
+  // State
+  const [character, setCharacter] = useState<Character | null>(null);
+
+  // Params
+  const { id } = useParams();
 
   useEffect(() => {
-    // setCharacter(INITIAL_STATE);
-  }, [])
-  
-  // TODO: Fetch and set data single character
-  return <SingleCharacterView data={character} />;
+    if (id) {
+      getSingleCharacter(id).
+        then(setCharacter);
+        // TODO: catch!
+    }
+  }, [id]);
+
+  // Render
+  if(character){
+    return <SingleCharacterView data={character} />;
+  }
+  return <p>Loading...</p>;
 };
 
 export default SingleCharacterContainer;
