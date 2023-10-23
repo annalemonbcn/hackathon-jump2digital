@@ -12,7 +12,7 @@ import Footer from "./components/Footer";
 function App() {
   return (
     <BrowserRouter>
-      <div className="App bg-main-green-dark min-h-screen pt-10 px-8 md:px-14 lg:px-20">
+      <div className="App bg-main-violet min-h-screen pt-10 px-8 md:px-14 lg:px-20">
         <Routes>
           <Route
             path="/*"
