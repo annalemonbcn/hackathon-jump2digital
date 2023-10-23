@@ -7,7 +7,7 @@ import SingleCharacterContainer from "./containers/SingleCharacterContainer";
 
 const Main = () => {
   return (
-    <main className="mt-10">
+    <main className="mt-10 pb-20">
       <Routes>
         <Route path="/" element={<CharacterListContainer />} />
         <Route path="/id/:id" element={<SingleCharacterContainer />} />
