@@ -8,7 +8,7 @@ import { Character } from "../../types";
 import CharacterListView from "../views/CharacterListView";
 
 // Services
-import { getAllCharacters } from "../../services/getAllCharacters";
+import { getAllCharacters } from "../../api/services/getAllCharacters";
 
 const CharacterListContainer = () => {
   const [characters, setCharacters] = useState<Array<Character>>([]);

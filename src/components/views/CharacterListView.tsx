@@ -1,10 +1,11 @@
-import React from "react";
-
 // Types
 import { Character } from "../../types";
 
 // Router
 import { Link } from "react-router-dom";
+
+// Components
+import SearchBar from "../utils/SearchBar";
 
 // Props
 interface CharacterListProps {
@@ -15,6 +16,7 @@ const CharacterList = ({ data }: CharacterListProps) => {
   return (
     <>
       <h1 className="text-2xl font-custom font-bold title text-center lg:text-left">Characters list:</h1>
+      <SearchBar />
       <div className="grid xs:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-12 md:gap-8 md:gap-y-16 mt-12">
         {data.map((character) => {
           return (

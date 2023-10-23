@@ -1,5 +1,5 @@
 // Types
-import { Character, CharacterResponseFromApi } from "../types";
+import { Character, CharacterResponseFromApi } from "../../types";
 
 /**
  * fetchCharacter *

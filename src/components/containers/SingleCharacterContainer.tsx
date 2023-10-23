@@ -8,7 +8,7 @@ import { useParams } from "react-router-dom";
 import { Character } from "../../types";
 
 // Services
-import { getSingleCharacter } from "../../services/getSingleCharacter";
+import { getSingleCharacter } from "../../api/services/getSingleCharacter";
 
 // Components
 import SingleCharacterView from "../views/SingleCharacterView";

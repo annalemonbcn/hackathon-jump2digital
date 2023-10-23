@@ -1,5 +1,5 @@
 // Types
-import { Character, ResponseFromApi, CharacterResponseFromApi } from "../types";
+import { Character, ResponseFromApi, CharacterResponseFromApi } from "../../types";
 
 /**
  * fetchCharacters *
@@ -19,7 +19,7 @@ const fetchCharacters = (): Promise<ResponseFromApi> => {
  * @param dataObj 
  * @returns Array<Character>
  */
-const mapFromApiToCharacters = (
+export const mapFromApiToCharacters = (
   dataObj: Array<CharacterResponseFromApi>
 ): Array<Character> => {
   return dataObj.map((characterFromApi) => ({
