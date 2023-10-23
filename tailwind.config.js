@@ -11,6 +11,7 @@ module.exports = {
         "brown-soft": "d5c8b8",
         "brown-dark": "#70592d",
         "violet-soft": "#705667",
+        "main-violet": "#615daa",
         "grey-dark": "#303032",
       },
       fontFamily: {
