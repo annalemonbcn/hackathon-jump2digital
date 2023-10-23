@@ -22,8 +22,8 @@ const SingleCharacterContainer = () => {
 
   useEffect(() => {
     if (id) {
-      getSingleCharacter(id).
-        then(setCharacter);
+      getSingleCharacter(id)
+        .then(setCharacter);
         // TODO: catch!
     }
   }, [id]);
