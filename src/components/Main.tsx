@@ -3,12 +3,12 @@ import { Routes, Route } from "react-router-dom";
 
 // Component<
 import CharacterListContainer from "./containers/CharacterListContainer";
-import SearchBar from "./utils/SearchBar";
+import SearchContainer from "./containers/SearchContainer";
 
 const Main = () => {
   return (
     <main className="mt-10 pb-20">
-      <SearchBar />
+      <SearchContainer />
       <Routes>
         <Route path="/" element={<CharacterListContainer />} />
         

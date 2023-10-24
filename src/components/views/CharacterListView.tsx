@@ -17,23 +17,14 @@ const CharacterList = ({ data }: CharacterListProps) => {
           <Link
             to={`/id/${character.id}`}
             key={character.id}
-            className="flex flex-col items-center border-4 border-amber-400 rounded-md bg-blue-soft p-6 md:p-4 xl:p-6"
+            className="flex flex-col items-center border-4 border-amber-400 rounded-md bg-blue-soft p-6 md:p-4 xl:p-6 transform transition-transform scale-100 hover:scale-105"
           >
             <img
-              className="rounded-full h-auto w-min lg:w-3/4 -mt-14"
+              className="border-4 border-amber-400 rounded-full h-auto w-min lg:w-3/4 -mt-14"
               src={character.image}
               alt={character.name}
             />
-            <div className="mt-4 flex flex-col">
-              <p className="font-bold text-center">{character.name}</p>
-              <p>
-                {character.status === "Alive" ? "🟢" : "🔴"} {character.species}
-              </p>
-              <p>
-                <span className="font-bold">Origin: </span>
-                {character.origin.name}
-              </p>
-            </div>
+            <p className="mt-6 font-bold text-md text-center uppercase">{character.name}</p>
           </Link>
         );
       })}
