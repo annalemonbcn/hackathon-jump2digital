@@ -4,7 +4,7 @@ import SearchBar from "../utils/SearchBar";
 const SearchContainer = () => {
   return (
     <>
-      <div className="text-white my-8 mx-auto text-center text-xl lg:w-3/4">
+      <div className="text-white my-8 mx-auto text-center lg:text-xl lg:w-3/4">
         <p>
           Enter a character to access detailed information instantly, or simply
           scroll down and explore.

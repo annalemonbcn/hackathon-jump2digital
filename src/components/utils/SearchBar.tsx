@@ -8,7 +8,7 @@ import { getAllCharactersByName } from "../../api/services/getCharactersByName";
 import { CharactersContext } from "../../api/context/CharactersProvider";
 
 // Icon
-import SearchIcon from "../svg/SearchIcon";
+import SearchIcon from "./svg/SearchIcon";
 
 
 const SearchBar = () => {

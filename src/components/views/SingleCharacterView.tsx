@@ -9,8 +9,6 @@ interface SingleCharacterViewProps {
 }
 
 const SingleCharacterView = ({ data }: SingleCharacterViewProps) => {
-  console.log("data", data);
-
   return (
     <>
     <div>

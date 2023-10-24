@@ -20,7 +20,7 @@ const CharacterList = ({ data }: CharacterListProps) => {
             className="flex flex-col items-center border-4 border-amber-400 rounded-md bg-blue-soft p-6 md:p-4 xl:p-6 transform transition-transform scale-100 hover:scale-105"
           >
             <img
-              className="border-4 border-amber-400 rounded-full h-auto w-min lg:w-3/4 -mt-14"
+              className="border-4 border-amber-400 rounded-full h-auto w-3/4 -mt-14"
               src={character.image}
               alt={character.name}
             />
