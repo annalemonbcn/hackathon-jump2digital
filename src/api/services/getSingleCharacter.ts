@@ -30,7 +30,6 @@ const fetchCharacter = (id: string): Promise<CharacterResponseFromApi> => {
 export const getSingleCharacter = (id: string) => {
   return fetchCharacter(id)
     .then((res) => {
-      console.log('res', res)
       return res;
     })
     .catch((error) => {
