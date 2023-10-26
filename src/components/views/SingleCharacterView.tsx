@@ -4,6 +4,13 @@ import { CharacterResponseFromApi } from "../../types";
 // Router
 import { Link } from "react-router-dom";
 
+// MUI
+import Accordion from "@mui/material/Accordion";
+import AccordionSummary from "@mui/material/AccordionSummary";
+import AccordionDetails from "@mui/material/AccordionDetails";
+import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
+
+// Props
 interface SingleCharacterViewProps {
   data: CharacterResponseFromApi;
 }
@@ -70,8 +77,8 @@ const SingleCharacterView = ({ data }: SingleCharacterViewProps) => {
         </Link>
       </div>
 
-      <div className="w-full flex items-start justify-center gap-8 character mt-10 mx-auto relative z-10">
-        <div className="max-w-[65%]">
+      <div className="w-full flex flex-col md:flex-row items-center md:items-start justify-center gap-8 character mt-10 mx-auto relative z-10">
+        <div className="w-full md:w-auto md:max-w-[65%]">
           <p className="mb-4 py-2 px-3 rounded-md bg-grey-dark text-white text-center font-bold text-xl">
             {data.status === "Alive" ? "🟢" : "🔴"} {data.name} -{" "}
             {data.gender === "Male" ? "♂️" : "♀️"}
@@ -79,35 +86,46 @@ const SingleCharacterView = ({ data }: SingleCharacterViewProps) => {
           <img className="w-full rounded-md" src={data.image} alt={data.name} />
         </div>
 
-        <div className="w-1/3 max-w-[500px] flex flex-col gap-2  bg-white p-4 rounded-md border-2 border-blue-dark">
+        <div className="w-full md:w-1/3 max-w-[500px] flex flex-col gap-2  bg-white p-4 rounded-md border-2 border-blue-dark">
           <p>
-            <span className="font-bold">Origin: </span>
+            &gt; <span className="font-bold">Origin: </span>
             {data.origin.name}
           </p>
           <p>
-            <span className="font-bold">Location: </span>
+          &gt; <span className="font-bold">Location: </span>
             {data.location.name}
           </p>
           <p>
-            <span className="font-bold">Species: </span>
+          &gt; <span className="font-bold">Species: </span>
             {data.species}
           </p>
           <p>
-            <span className="font-bold">Status: </span>
+            &gt; <span className="font-bold">Status: </span>
             {data.status}
           </p>
           <p>
-            <span className="font-bold">Type: </span>
+            &gt; <span className="font-bold">Type: </span>
             {data.type === "" ? "?" : data.type}
           </p>
           <div>
-            <p className="font-bold">Episodes list:</p>
-            <ul>
-              {data.episode.map((episodeUrl, index) => {
-                const episodeNumber = episodeUrl.split("/").pop();
-                return <li key={index}>{episodeNumber}</li>;
-              })}
-            </ul>
+            <Accordion style={{ padding: '0', margin: '0', borderColor: 'transparent', boxShadow: 'none' }}>
+              <AccordionSummary
+                expandIcon={<ExpandMoreIcon />}
+                aria-controls="panel1a-content"
+                id="panel1a-header"
+                style={{ padding: '0', margin: '0', minHeight: 'auto' }}
+              >
+                <span className="font-bold">Episodes list:</span>
+              </AccordionSummary>
+              <AccordionDetails>
+                <ul>
+                  {data.episode.map((episodeUrl, index) => {
+                    const episodeNumber = episodeUrl.split("/").pop();
+                    return <li key={index} className="list-disc">{episodeNumber}</li>;
+                  })}
+                </ul>
+              </AccordionDetails>
+            </Accordion>
           </div>
         </div>
       </div>
