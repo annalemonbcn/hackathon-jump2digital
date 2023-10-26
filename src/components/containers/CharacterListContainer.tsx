@@ -2,7 +2,7 @@
 import { useEffect, useState, useContext } from "react";
 
 // Types
-import { Character } from "../../types";
+import { CharacterResponseFromApi } from "../../types";
 
 // Components
 import CharacterListView from "../views/CharacterListView";
@@ -13,7 +13,7 @@ import { CharactersContext } from "../../api/context/CharactersProvider";
 
 const CharacterListContainer = () => {
   // State
-  const [characters, setCharacters] = useState<Array<Character>>([]);
+  const [characters, setCharacters] = useState<Array<CharacterResponseFromApi>>([]);
 
   // Context
   const charactersContext = useContext(CharactersContext);

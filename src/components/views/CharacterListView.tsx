@@ -1,12 +1,12 @@
 // Types
-import { Character } from "../../types";
+import { CharacterResponseFromApi } from "../../types";
 
 // Router
 import { Link } from "react-router-dom";
 
 // Props
 interface CharacterListProps {
-  data: Array<Character>;
+  data: Array<CharacterResponseFromApi>;
 }
 
 const CharacterList = ({ data }: CharacterListProps) => {

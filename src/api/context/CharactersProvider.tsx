@@ -2,15 +2,15 @@
 import { createContext, useState, ReactNode, useEffect } from "react";
 
 // Types
-import { Character } from "../../types";
+import { CharacterResponseFromApi } from "../../types";
 
 // Services
 import { getAllCharacters } from "../services/getAllCharacters";
 
 // Props types
 interface CharactersContextProps {
-  allCharacters: Array<Character>
-  setAllCharacters: (characters: Array<Character>) => void
+  allCharacters: Array<CharacterResponseFromApi>
+  setAllCharacters: (characters: Array<CharacterResponseFromApi>) => void
 }
 interface CharactersProviderProps {
   children: ReactNode;
@@ -23,7 +23,7 @@ export const CharactersContext = createContext<
 
 const CharactersProvider = (props: CharactersProviderProps) => {
   // State
-  const [allCharacters, setAllCharacters] = useState<Array<Character>>();
+  const [allCharacters, setAllCharacters] = useState<Array<CharacterResponseFromApi>>();
 
   useEffect(() => {
     // Call the getAllCharacters method and set the processed response

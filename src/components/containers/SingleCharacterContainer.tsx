@@ -5,7 +5,7 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 
 // Types
-import { Character } from "../../types";
+import { CharacterResponseFromApi } from "../../types";
 
 // Services
 import { getSingleCharacter } from "../../api/services/getSingleCharacter";
@@ -15,7 +15,7 @@ import SingleCharacterView from "../views/SingleCharacterView";
 
 const SingleCharacterContainer = () => {
   // State
-  const [character, setCharacter] = useState<Character | null>(null);
+  const [character, setCharacter] = useState<CharacterResponseFromApi | null>(null);
 
   // Params
   const { id } = useParams();
