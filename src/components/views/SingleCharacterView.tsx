@@ -1,11 +1,11 @@
 // Types
-import { Character } from "../../types";
+import { CharacterResponseFromApi } from "../../types";
 
 // Router
 import { Link } from "react-router-dom";
 
 interface SingleCharacterViewProps {
-  data: Character;
+  data: CharacterResponseFromApi;
 }
 
 const SingleCharacterView = ({ data }: SingleCharacterViewProps) => {

@@ -1,5 +1,5 @@
 // Types
-import { Character, CharacterResponseFromApi } from "../../types";
+import { CharacterResponseFromApi } from "../../types";
 
 /**
  * fetchCharacter *
@@ -9,28 +9,32 @@ import { Character, CharacterResponseFromApi } from "../../types";
 const fetchCharacter = (id: string): Promise<CharacterResponseFromApi> => {
   return fetch(`https://rickandmortyapi.com/api/character/${id}`)
     .then((res) => res.json())
-}
-
-const mapFromApiToCharacter = (
-  dataObj: CharacterResponseFromApi
-): Character => {
-  return {
-    id: dataObj.id,
-    name: dataObj.name,
-    status: dataObj.status,
-    species: dataObj.species,
-    type: dataObj.type,
-    gender: dataObj.gender,
-    origin: dataObj.origin,
-    image: dataObj.image,
-    url: dataObj.url,
-  } = dataObj;
+    .then((data) => {
+      if (data && data.id) {
+        return data;
+      } else {
+        throw new Error("Error: No results found");
+      }
+    })
+    .catch((error) => {
+      console.error(`Error in fetchCaracter: ${error}`);
+      throw error;
+    });
 };
 
+/**
+ * getSingleCharacter *
+ * Exec fetch request and return the data
+ * @returns res
+ */
 export const getSingleCharacter = (id: string) => {
   return fetchCharacter(id)
     .then((res) => {
-      const selectedChar = mapFromApiToCharacter(res);
-      return selectedChar;
+      console.log('res', res)
+      return res;
     })
-}
+    .catch((error) => {
+      console.error(`Error in getSingleCharacter: ${error}`);
+      throw error;
+    });
+};

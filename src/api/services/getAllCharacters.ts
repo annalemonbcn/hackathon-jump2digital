@@ -1,5 +1,5 @@
 // Types
-import { Character, ResponseFromApi, CharacterResponseFromApi } from "../../types";
+import { ResponseFromApi } from "../../types";
 
 /**
  * fetchCharacters *
@@ -8,42 +8,32 @@ import { Character, ResponseFromApi, CharacterResponseFromApi } from "../../type
  */
 const fetchCharacters = (): Promise<ResponseFromApi> => {
   return fetch("https://rickandmortyapi.com/api/character")
-    .then((res) =>
-      res.json()
-    );
-};
-
-/**
- * mapFromApiToCharacters *
- * Select properties from characterFromApi to create the Array<Character>
- * @param dataObj 
- * @returns Array<Character>
- */
-export const mapFromApiToCharacters = (
-  dataObj: Array<CharacterResponseFromApi>
-): Array<Character> => {
-  return dataObj.map((characterFromApi) => ({
-    id: characterFromApi.id,
-    name: characterFromApi.name,
-    status: characterFromApi.status,
-    species: characterFromApi.species,
-    type: characterFromApi.type,
-    gender: characterFromApi.gender,
-    origin: characterFromApi.origin,
-    image: characterFromApi.image,
-    url: characterFromApi.url,
-  }));
+    .then((res) => res.json())
+    .then((data) => {
+      if (data.results && data.results.length > 0) {
+        return data;
+      } else {
+        throw new Error("Error: No results found");
+      }
+    })
+    .catch((error) => {
+      console.error(`Error in fetchCaracters: ${error}`);
+      throw error;
+    });
 };
 
 /**
  * getAllCharacters *
- * Exec fetch request, map the elements and return the data
- * @returns selectedCharacters
+ * Exec fetch request and return the data
+ * @returns res.results
  */
 export const getAllCharacters = () => {
   return fetchCharacters()
     .then((res) => {
-      const selectedCharacters = mapFromApiToCharacters(res.results);
-      return selectedCharacters;
+      return res.results;
     })
-}
+    .catch((error) => {
+      console.error(`Error in getAllCharacters: ${error}`);
+      throw error;
+    });
+};
