@@ -24,7 +24,7 @@ const CharacterList = ({ data }: CharacterListProps) => {
               src={character.image}
               alt={character.name}
             />
-            <p className="mt-6 font-bold text-md text-center uppercase">{character.name}</p>
+            <p className="mt-6 font-bold text-md text-center">{character.name}</p>
           </Link>
         );
       })}
