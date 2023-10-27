@@ -46,7 +46,7 @@ const SearchBar = () => {
         value={query}
         onChange={handleInputChange}
         placeholder="Type to search a character"
-        className="w-full h-10 pl-12 py-4 bg-white rounded-md text-sm lg:text-base"
+        className="w-full h-10 pl-12 py-4 bg-white rounded-md text-sm lg:text-base focus:border-[3px] focus:border-amber-400 focus:outline-0"
       />
       <SearchIcon />
     </div>

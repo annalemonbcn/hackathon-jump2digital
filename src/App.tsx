@@ -16,7 +16,7 @@ function App() {
   return (
     <BrowserRouter>
       <CharactersProvider>
-        <div className="App bg-main-violet relative min-h-screen pt-10 px-8 md:px-14 lg:px-20">
+        <div className="App bg-main-violet relative min-h-screen py-10 px-8 md:px-14 lg:px-20 text-grey-dark">
           <Routes>
             <Route
               path="/*"
