@@ -1,9 +1,14 @@
 import React from "react";
 
-const LoadMore = () => {
+interface LoadMoreProps {
+  loadMoreCharacters: () => void
+}
+
+const LoadMore = ({ loadMoreCharacters }: LoadMoreProps) => {
 
   const handleLoad = ():void => {
     console.log("load more")
+    loadMoreCharacters();
   }
 
   return (

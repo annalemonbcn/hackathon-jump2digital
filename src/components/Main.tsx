@@ -1,10 +1,9 @@
 // Routing
 import { Routes, Route } from "react-router-dom";
 
-// Component<
+// Components
 import CharacterListContainer from "./containers/CharacterListContainer";
 import SearchContainer from "./containers/SearchContainer";
-import LoadMore from "./utils/LoadMore";
 
 const Main = () => {
   return (
@@ -15,7 +14,6 @@ const Main = () => {
         
         <Route path="*" element={<h1>404</h1>} />
       </Routes>
-      <LoadMore />
     </main>
   );
 };
