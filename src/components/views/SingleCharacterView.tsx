@@ -6,11 +6,14 @@ import { Link } from "react-router-dom";
 
 // Components
 import AccordionBasic from "../utils/AccordionBasic";
+import CarousselContainer from "../containers/CarousselContainer";
 
 // MUI
 import { Tooltip } from "@mui/material";
 import DeleteIcon from "@mui/icons-material/Delete";
 import IconButton from "@mui/material/IconButton";
+
+
 
 // Props
 interface SingleCharacterViewProps {
@@ -18,7 +21,6 @@ interface SingleCharacterViewProps {
 }
 
 const SingleCharacterView = ({ data }: SingleCharacterViewProps) => {
-  console.log("data", data);
   return (
     <>
       <div className="w-full flex flex-col md:flex-row items-center md:items-start justify-center gap-8 character mx-auto">
@@ -75,6 +77,7 @@ const SingleCharacterView = ({ data }: SingleCharacterViewProps) => {
           </div>
         </div>
       </div>
+      <CarousselContainer name={data.name} id={data.id} />
     </>
   );
 };
