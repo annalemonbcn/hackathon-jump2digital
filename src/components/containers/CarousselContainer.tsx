@@ -41,8 +41,8 @@ const CarousselContainer = (props: CarousselContainerProps) => {
   }, [props.name]);
 
   return (
-    <div className="max-w-[85%] mx-auto">
-      <h1 className="font-2xl font-bold mt-10">Related characters:</h1>
+    <div className="mt-10 p-4 border-4 border-amber-400 rounded-md bg-blue-soft">
+      <h1 className="text-xl font-bold">Related characters:</h1>
       {!loading ? (
         relatedChars.length === 0 ? (
           <p>No more related characters.</p>

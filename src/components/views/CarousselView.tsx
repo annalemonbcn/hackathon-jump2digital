@@ -22,6 +22,7 @@ const CarousselView = ({ data }: CarousselViewProps) => {
   return (
     <>
       <Swiper
+        className="mt-5 mySwiper"
         slidesPerView={1}
         spaceBetween={30}
         freeMode={true}
@@ -35,14 +36,13 @@ const CarousselView = ({ data }: CarousselViewProps) => {
           }
         }}
         modules={[FreeMode, Navigation]}
-        className="mySwiper"
       >
         {data.map((character) => {
           return (
-            <SwiperSlide>
+            <SwiperSlide className="rounded-md">
               <div className="flex flex-col gap-2">
-                <Link to={`/id/${character.id}`}>
-                  <img src={character.image} alt="" />
+                <Link to={`/id/${character.id}`} >
+                  <img src={character.image} alt="" className="rounded-t-md" />
                 </Link>
                 <p>{character.name}</p>
               </div>
