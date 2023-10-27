@@ -35,7 +35,7 @@ const SingleCharacterView = ({ data }: SingleCharacterViewProps) => {
                 <span>❓</span>
               )}
             </Tooltip>
-
+            {" "}
             {data.name}
           </p>
           <img className="w-full rounded-md" src={data.image} alt={data.name} />
@@ -70,8 +70,8 @@ const SingleCharacterView = ({ data }: SingleCharacterViewProps) => {
           <div className="mt-2 rounded-md border-2 border-grey-dark">
             <AccordionBasic data={data} />
           </div>
-          <div className="mt-20 text-center md:text-right">
-            <Link className="px-3 py-2 rounded bg-blue-soft border-4 border-amber-400" to="/">
+          <div className="mt-10 lg:mt-20 text-center md:text-right">
+            <Link className="px-3 py-2 rounded bg-white border-2 border-amber-400" to="/">
               ← Back to search
             </Link>
           </div>
