@@ -14,6 +14,7 @@ import { CharactersContext } from "../../api/context/CharactersProvider";
 const CharacterListContainer = () => {
   // State
   const [characters, setCharacters] = useState<Array<CharacterResponseFromApi>>([]);
+  const [nextPage, setNextPage] = useState<string | null>(null);
 
   // Context
   const charactersContext = useContext(CharactersContext);
