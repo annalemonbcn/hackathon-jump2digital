@@ -1,11 +1,12 @@
 // Hooks
-import { useState, useContext } from "react";
+import { useState, useContext, useEffect } from "react";
 
 // Toast
 import { toast } from "sonner";
 
 // Services
 import { getAllCharactersByName } from "../../api/services/getCharactersByName";
+import { getAllCharacters } from "../../api/services/getAllCharacters";
 
 // Context
 import { CharactersContext } from "../../api/context/CharactersProvider";
@@ -20,6 +21,7 @@ const SearchBar = () => {
   // Context
   const charactersContext = useContext(CharactersContext);
 
+  // Actions
   const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const newQuery = event.target.value;
     setQuery(newQuery);
@@ -41,6 +43,17 @@ const SearchBar = () => {
       });
   };
 
+  const handleResetClick = () => {
+    getAllCharacters("https://rickandmortyapi.com/api/character")
+      .then((characters) => {
+        charactersContext?.setAllCharacters(characters);
+      })
+      .catch((error) => {
+        console.error("Error loading characters:", error);
+        toast.error("Error loading characters");
+      });
+  };
+
   return (
     <div className="w-full lg:w-3/4 mx-auto flex items-center relative searchbar">
       <input
@@ -50,6 +63,12 @@ const SearchBar = () => {
         placeholder="Type to search a character"
         className="w-full h-10 pl-12 py-4 bg-white rounded-md text-sm lg:text-base focus:border-[3px] focus:border-amber-400 focus:outline-0"
       />
+      <button
+        onClick={handleResetClick}
+        className="absolute top-0 right-0 h-10 py-2 px-4 cursor-pointer text-sm"
+      >
+        Reset search
+      </button>
       <SearchIcon />
     </div>
   );
