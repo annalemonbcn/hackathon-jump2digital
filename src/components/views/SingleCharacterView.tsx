@@ -10,10 +10,7 @@ import CarousselContainer from "../containers/CarousselContainer";
 
 // MUI
 import { Tooltip } from "@mui/material";
-import DeleteIcon from "@mui/icons-material/Delete";
-import IconButton from "@mui/material/IconButton";
-
-
+import Header from "../Header";
 
 // Props
 interface SingleCharacterViewProps {
@@ -34,8 +31,7 @@ const SingleCharacterView = ({ data }: SingleCharacterViewProps) => {
               ) : (
                 <span>❓</span>
               )}
-            </Tooltip>
-            {" "}
+            </Tooltip>{" "}
             {data.name}
           </p>
           <img className="w-full rounded-md" src={data.image} alt={data.name} />
@@ -71,7 +67,10 @@ const SingleCharacterView = ({ data }: SingleCharacterViewProps) => {
             <AccordionBasic data={data} />
           </div>
           <div className="mt-10 lg:mt-20 text-center md:text-right">
-            <Link className="px-3 py-2 rounded bg-white border-2 border-amber-400" to="/">
+            <Link
+              className="px-3 py-2 rounded bg-white border-2 border-amber-400"
+              to="/"
+            >
               ← Back to search
             </Link>
           </div>
