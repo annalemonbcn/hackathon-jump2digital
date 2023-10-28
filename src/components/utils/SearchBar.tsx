@@ -4,6 +4,9 @@ import { useState, useContext, useEffect } from "react";
 // Toast
 import { toast } from "sonner";
 
+// MUI Icon
+import HighlightOffIcon from '@mui/icons-material/HighlightOff';
+
 // Services
 import { getAllCharactersByName } from "../../api/services/getCharactersByName";
 import { getAllCharacters } from "../../api/services/getAllCharacters";
@@ -19,6 +22,8 @@ import SearchIcon from "./svg/SearchIcon";
 const SearchBar = () => {
   // State
   const [query, setQuery] = useState<string>("");
+  const [buttonSearchText, setButtonSearchText] = useState<React.ReactNode>();
+
 
   // Context
   const charactersContext = useContext(CharactersContext);
@@ -31,8 +36,6 @@ const SearchBar = () => {
     }
   }, [query])
   
-
-  // Actions
   const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     // Set searchActive state to true
     searchContext?.setSearchState(true);
@@ -78,7 +81,7 @@ const SearchBar = () => {
         type="text"
         value={query}
         onChange={handleInputChange}
-        placeholder="Type to search a character"
+        placeholder="Type to search"
         className="w-full h-10 pl-12 py-4 bg-white rounded-md text-sm lg:text-base focus:border-[3px] focus:border-amber-400 focus:outline-0"
       />
       <button
@@ -86,7 +89,7 @@ const SearchBar = () => {
         className={`absolute top-0 right-0 h-10 py-2 px-4 text-sm ${query.length === 0 ? "opacity-50 cursor-not-allowed" : "cursor-pointer"}`}
         disabled={query.length === 0}
       >
-        Reset search
+        <HighlightOffIcon />
       </button>
       <SearchIcon />
     </div>
