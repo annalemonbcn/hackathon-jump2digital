@@ -1,3 +1,6 @@
+// Router
+import { useLocation } from 'react-router-dom';
+
 // Types
 import { CharacterResponseFromApi } from "../../types";
 
@@ -10,7 +13,7 @@ import CarousselContainer from "../containers/CarousselContainer";
 
 // MUI
 import { Tooltip } from "@mui/material";
-import Header from "../Header";
+import { useEffect } from "react";
 
 // Props
 interface SingleCharacterViewProps {
@@ -18,6 +21,14 @@ interface SingleCharacterViewProps {
 }
 
 const SingleCharacterView = ({ data }: SingleCharacterViewProps) => {
+
+  let location = useLocation();
+
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [location])
+  
   return (
     <>
       <div className="w-full flex flex-col md:flex-row items-center md:items-start justify-center gap-8 character mx-auto">
