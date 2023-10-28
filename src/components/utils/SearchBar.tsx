@@ -1,11 +1,16 @@
 // Hooks
-import { useState, useContext } from "react";
+import { useState, useContext, useEffect } from "react";
+
+// Toast
+import { toast } from "sonner";
 
 // Services
 import { getAllCharactersByName } from "../../api/services/getCharactersByName";
+import { getAllCharacters } from "../../api/services/getAllCharacters";
 
 // Context
 import { CharactersContext } from "../../api/context/CharactersProvider";
+import { SearchContext } from "../../api/context/SearchProvider";
 
 // Icon
 import SearchIcon from "./svg/SearchIcon";
@@ -17,27 +22,55 @@ const SearchBar = () => {
 
   // Context
   const charactersContext = useContext(CharactersContext);
+  const searchContext = useContext(SearchContext);
 
+  useEffect(() => {
+    // Set search state to false everytime query.length === 0 so the "Load more" button can appear
+    if(query.length === 0){
+      searchContext?.setSearchState(false)
+    }
+  }, [query])
+  
 
+  // Actions
   const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    // Set searchActive state to true
+    searchContext?.setSearchState(true);
+
+    // Query
     const newQuery = event.target.value;
     setQuery(newQuery);
+
+    // Fetch request to the api
     getAllCharactersByName(newQuery)
       .then((searchResults) => {
-        // Check if charactersContext exist
-        if(charactersContext) {
-          charactersContext.setAllCharacters(searchResults);
-        }
+        // Set the searchResults if allCharacters exist
+        charactersContext?.setAllCharacters(searchResults);
       })
       .catch((error) => {
-        console.error("Error fetching data: " + error);
-        if(charactersContext) {
-          charactersContext.setAllCharacters([]);
-          // TODO: gestionar loading vs array buit
-        }
+        console.error("Error getting results: " + error);
+        toast.message("No results matched your search", {
+          style: {
+            background: "moccasin",
+          },
+        });
+        charactersContext?.setAllCharacters([]);
       });
   };
 
+  const handleResetClick = () => {
+    getAllCharacters("https://rickandmortyapi.com/api/character")
+      .then((characters) => {
+        // Set allCharacters to state
+        charactersContext?.setAllCharacters(characters);
+        // Reset query
+        setQuery("")
+      })
+      .catch((error) => {
+        console.error("Error loading characters:", error);
+        toast.error("Error loading characters");
+      });
+  };
 
   return (
     <div className="w-full lg:w-3/4 mx-auto flex items-center relative searchbar">
@@ -48,6 +81,13 @@ const SearchBar = () => {
         placeholder="Type to search a character"
         className="w-full h-10 pl-12 py-4 bg-white rounded-md text-sm lg:text-base focus:border-[3px] focus:border-amber-400 focus:outline-0"
       />
+      <button
+        onClick={handleResetClick}
+        className={`absolute top-0 right-0 h-10 py-2 px-4 text-sm ${query.length === 0 ? "opacity-50 cursor-not-allowed" : "cursor-pointer"}`}
+        disabled={query.length === 0}
+      >
+        Reset search
+      </button>
       <SearchIcon />
     </div>
   );

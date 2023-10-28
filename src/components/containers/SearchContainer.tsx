@@ -1,6 +1,7 @@
 // Components
 import SearchBar from "../utils/SearchBar";
 
+
 const SearchContainer = () => {
   return (
     <>

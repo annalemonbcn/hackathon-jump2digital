@@ -1,6 +1,11 @@
 // Types
 import { ResponseFromApi } from "../../types";
 
+/**
+ * fetchCharactersByName *
+ * Fetch request by concrete name to rick and morty api
+ * @returns response in json format
+ */
 const fetchCharactersByName = (query: string): Promise<ResponseFromApi> => {
   return fetch(`https://rickandmortyapi.com/api/character/?name=${query}`)
     .then((res) => res.json())
@@ -17,6 +22,11 @@ const fetchCharactersByName = (query: string): Promise<ResponseFromApi> => {
     });
 };
 
+/**
+ * getAllCharactersByName *
+ * Exec fetch request and return the data
+ * @returns res.results
+ */
 export const getAllCharactersByName = (query: string) => {
   return fetchCharactersByName(query)
     .then((res) => {

@@ -1,3 +1,6 @@
+// Hooks
+import { useContext } from "react";
+
 // Types
 import { CharacterResponseFromApi } from "../../types";
 
@@ -5,12 +8,18 @@ import { CharacterResponseFromApi } from "../../types";
 import { Link } from "react-router-dom";
 import LoadMore from "../utils/LoadMore";
 
+// Context
+import { SearchContext } from "../../api/context/SearchProvider";
+
 // Props
 interface CharacterListProps {
   data: Array<CharacterResponseFromApi>;
 }
 
-const CharacterList = ({ data }: CharacterListProps) => {
+const CharacterListView = ({ data }: CharacterListProps) => {
+  // Context
+  const searchContext = useContext(SearchContext)
+
   return (
     <>
       <div className="grid xs:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-12 md:gap-8 md:gap-y-16 mt-20">
@@ -33,9 +42,10 @@ const CharacterList = ({ data }: CharacterListProps) => {
           );
         })}
       </div>
-      <LoadMore />
+      {/* Load more button */}
+      {!searchContext?.searchActive ? <LoadMore /> : null}
     </>
   );
 };
 
-export default CharacterList;
+export default CharacterListView;

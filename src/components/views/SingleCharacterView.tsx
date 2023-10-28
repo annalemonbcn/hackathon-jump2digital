@@ -1,5 +1,5 @@
 // Router
-import { useLocation } from 'react-router-dom';
+import { useLocation } from "react-router-dom";
 
 // Types
 import { CharacterResponseFromApi } from "../../types";
@@ -21,14 +21,13 @@ interface SingleCharacterViewProps {
 }
 
 const SingleCharacterView = ({ data }: SingleCharacterViewProps) => {
-
   let location = useLocation();
 
-
   useEffect(() => {
+    // Scroll to top everytime the component renders
     window.scrollTo(0, 0);
-  }, [location])
-  
+  }, [location]);
+
   return (
     <>
       <div className="w-full flex flex-col md:flex-row items-center md:items-start justify-center gap-8 character mx-auto">
@@ -42,7 +41,7 @@ const SingleCharacterView = ({ data }: SingleCharacterViewProps) => {
               ) : (
                 <span>❓</span>
               )}
-            </Tooltip>{" "}
+            </Tooltip>
             {data.name}
           </p>
           <img className="w-full rounded-md" src={data.image} alt={data.name} />
