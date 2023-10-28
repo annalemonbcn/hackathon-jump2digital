@@ -1,6 +1,9 @@
 // Hooks
 import { createContext, useState, ReactNode, useEffect } from "react";
 
+// Toast
+import { toast } from "sonner";
+
 // Types
 import { CharacterResponseFromApi } from "../../types";
 
@@ -30,9 +33,13 @@ const CharactersProvider = (props: CharactersProviderProps) => {
   useEffect(() => {
     // Call the getAllCharacters method and set the processed response
     getAllCharacters("https://rickandmortyapi.com/api/character")
-      .then((characters) => setAllCharacters(characters))
+      .then((characters) => {
+        setAllCharacters(characters)
+        toast.success("Characters loaded! Have fun :)")
+      })
       .catch((error) => {
         console.error("Error loading characters:", error);
+        toast.error("Error loading characters")
       });
   }, []);
 
@@ -50,6 +57,7 @@ const CharactersProvider = (props: CharactersProviderProps) => {
       })
       .catch((error) => {
         console.error("Error loading more characters:", error);
+        toast.error("Error loading characters")
       });
   }
 

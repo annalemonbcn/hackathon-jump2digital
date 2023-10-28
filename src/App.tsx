@@ -1,7 +1,9 @@
-import React from "react";
-
 // Router
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+
+// Toaster
+import { Toaster } from 'sonner'
+
 
 // Components
 import Header from "./components/Header";
@@ -16,6 +18,7 @@ function App() {
     <BrowserRouter>
       <CharactersProvider>
         <div className="App bg-main-violet relative min-h-screen py-10 px-8 md:px-14 lg:px-20 text-grey-dark">
+          <Toaster position="top-right" richColors />
           <Routes>
             <Route
               path="/*"

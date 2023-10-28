@@ -25,9 +25,10 @@ const CarousselContainer = (props: CarousselContainerProps) => {
 
   useEffect(() => {
     const query = props.name.split(" ");
-    // Fetch data
+    // Fetch data from api
     getAllCharactersByName(query[0])
       .then((searchCharacters) => {
+        // Exclude the actual character from the render
         const auxSearchCharacters = searchCharacters.filter(
           (obj) => obj.id !== props.id
         );

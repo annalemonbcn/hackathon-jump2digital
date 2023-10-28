@@ -1,6 +1,9 @@
 // Hooks
 import { useEffect, useState } from "react";
 
+// Toast
+import { toast } from "sonner";
+
 // Router
 import { useParams } from "react-router-dom";
 
@@ -15,21 +18,27 @@ import SingleCharacterView from "../views/SingleCharacterView";
 
 const SingleCharacterContainer = () => {
   // State
-  const [character, setCharacter] = useState<CharacterResponseFromApi | null>(null);
+  const [character, setCharacter] = useState<CharacterResponseFromApi | null>(
+    null
+  );
 
   // Params
   const { id } = useParams();
 
   useEffect(() => {
     if (id) {
+      // Fetch data from api
       getSingleCharacter(id)
-        .then(setCharacter);
-        // TODO: catch!
+        .then(setCharacter)
+        .catch((error) => {
+          console.error("Error loading the character", error);
+          toast.error("Error loading the character");
+        });
     }
   }, [id]);
 
   // Render
-  if(character){
+  if (character) {
     return <SingleCharacterView data={character} />;
   }
   return <p>Loading...</p>;

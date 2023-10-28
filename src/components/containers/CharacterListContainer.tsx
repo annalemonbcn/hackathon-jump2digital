@@ -19,7 +19,7 @@ const CharacterListContainer = () => {
   const charactersContext = useContext(CharactersContext);
 
   useEffect(() => {
-    // Check if charactersContext exist and set characters
+    // Set the characters if charactersContext exist
     setCharacters(charactersContext?.allCharacters || []);
   }, [charactersContext]);
 
