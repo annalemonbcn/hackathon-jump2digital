@@ -1,5 +1,5 @@
 // Hooks
-import { useState, useContext } from "react";
+import { useState, useContext, useEffect } from "react";
 
 // Toast
 import { toast } from "sonner";
@@ -24,11 +24,18 @@ const SearchBar = () => {
   const charactersContext = useContext(CharactersContext);
   const searchContext = useContext(SearchContext);
 
+  useEffect(() => {
+    // Set search state to false everytime query.length === 0 so the "Load more" button can appear
+    if(query.length === 0){
+      searchContext?.setSearchState(false)
+    }
+  }, [query])
+  
+
   // Actions
   const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    console.log("handleInputChange")
     // Set searchActive state to true
-    searchContext?.searchbarClicked();
+    searchContext?.setSearchState(true);
 
     // Query
     const newQuery = event.target.value;
@@ -54,7 +61,10 @@ const SearchBar = () => {
   const handleResetClick = () => {
     getAllCharacters("https://rickandmortyapi.com/api/character")
       .then((characters) => {
+        // Set allCharacters to state
         charactersContext?.setAllCharacters(characters);
+        // Reset query
+        setQuery("")
       })
       .catch((error) => {
         console.error("Error loading characters:", error);
@@ -73,7 +83,8 @@ const SearchBar = () => {
       />
       <button
         onClick={handleResetClick}
-        className="absolute top-0 right-0 h-10 py-2 px-4 cursor-pointer text-sm"
+        className={`absolute top-0 right-0 h-10 py-2 px-4 cursor-pointer text-sm ${query.length === 0 ? 'opacity-50 cursor-not-allowed' : null}`}
+        disabled={query.length === 0}
       >
         Reset search
       </button>

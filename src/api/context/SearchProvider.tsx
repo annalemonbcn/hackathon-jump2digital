@@ -5,7 +5,7 @@ import React, { createContext, useState, ReactNode } from "react";
 // Props types
 interface SearchContextProps {
   searchActive: boolean;
-  searchbarClicked: () => void;
+  setSearchState: (bool: boolean) => void;
 }
 
 interface SearchProviderProps {
@@ -22,14 +22,14 @@ const SearchProvider = (props: SearchProviderProps) => {
   const [searchActive, setSearchActive] = useState<boolean>(false);
 
   // Actions
-  const searchbarClicked = () => {
-    setSearchActive(true);
+  const setSearchState = (bool: boolean) => {
+    setSearchActive(bool);
   };
 
   // Provider value
   const searchContextValue: SearchContextProps = {
     searchActive,
-    searchbarClicked
+    setSearchState
   };
 
   return (
