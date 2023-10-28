@@ -22,8 +22,6 @@ import SearchIcon from "./svg/SearchIcon";
 const SearchBar = () => {
   // State
   const [query, setQuery] = useState<string>("");
-  const [buttonSearchText, setButtonSearchText] = useState<React.ReactNode>();
-
 
   // Context
   const charactersContext = useContext(CharactersContext);
