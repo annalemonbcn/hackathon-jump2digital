@@ -41,8 +41,10 @@ const CharactersProvider = (props: CharactersProviderProps) => {
   const loadMoreCharacters = ():void => {
     const nextPage: string = `https://rickandmortyapi.com/api/character?page=${page + 1}`;
 
+    // Call the getAllCharacters method
     getAllCharacters(nextPage)
       .then((newCharacters) => {
+        // Set the newCharacters but preserving the prevCharacters
         setAllCharacters((prevCharacters) => [...(prevCharacters || []), ...newCharacters]);
         setPage(page + 1);
       })

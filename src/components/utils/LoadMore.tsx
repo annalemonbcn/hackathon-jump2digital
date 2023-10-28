@@ -10,9 +10,7 @@ const LoadMore = () => {
   const charactersContext = useContext(CharactersContext);
 
   const handleLoad = ():void => {
-    if (charactersContext && charactersContext.allCharacters) {
-      charactersContext.loadMoreCharacters();
-    }
+    charactersContext?.loadMoreCharacters();
   }
 
   return (
