@@ -1,7 +1,7 @@
 // Routing
 import { Routes, Route } from "react-router-dom";
 
-// Component<
+// Components
 import CharacterListContainer from "./containers/CharacterListContainer";
 import SearchContainer from "./containers/SearchContainer";
 

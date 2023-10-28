@@ -6,8 +6,8 @@ import { ResponseFromApi } from "../../types";
  * Fetch request to rick and morty api
  * @returns response in json format
  */
-const fetchCharacters = (): Promise<ResponseFromApi> => {
-  return fetch("https://rickandmortyapi.com/api/character")
+const fetchCharacters = (url: string): Promise<ResponseFromApi> => {
+  return fetch(url)
     .then((res) => res.json())
     .then((data) => {
       if (data.results && data.results.length > 0) {
@@ -27,8 +27,8 @@ const fetchCharacters = (): Promise<ResponseFromApi> => {
  * Exec fetch request and return the data
  * @returns res.results
  */
-export const getAllCharacters = () => {
-  return fetchCharacters()
+export const getAllCharacters = (url: string) => {
+  return fetchCharacters(url)
     .then((res) => {
       return res.results;
     })
