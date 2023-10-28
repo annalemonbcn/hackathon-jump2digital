@@ -89,7 +89,7 @@ const SearchBar = () => {
         className={`absolute top-0 right-0 h-10 py-2 px-4 text-sm ${query.length === 0 ? "opacity-50 cursor-not-allowed" : "cursor-pointer"}`}
         disabled={query.length === 0}
       >
-        <HighlightOffIcon />
+        <HighlightOffIcon style={{ color: '#9CA3AF' }}/>
       </button>
       <SearchIcon />
     </div>
