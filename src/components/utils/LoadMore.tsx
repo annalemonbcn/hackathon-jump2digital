@@ -1,14 +1,18 @@
-import React from "react";
+// Hooks
+import { useContext } from "react";
 
-interface LoadMoreProps {
-  loadMoreCharacters: () => void
-}
+// Context
+import { CharactersContext } from "../../api/context/CharactersProvider";
 
-const LoadMore = ({ loadMoreCharacters }: LoadMoreProps) => {
+const LoadMore = () => {
+
+  // Context
+  const charactersContext = useContext(CharactersContext);
 
   const handleLoad = ():void => {
-    console.log("load more")
-    loadMoreCharacters();
+    if (charactersContext && charactersContext.allCharacters) {
+      charactersContext.loadMoreCharacters();
+    }
   }
 
   return (

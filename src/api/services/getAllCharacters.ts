@@ -11,7 +11,6 @@ const fetchCharacters = (url: string): Promise<ResponseFromApi> => {
     .then((res) => res.json())
     .then((data) => {
       if (data.results && data.results.length > 0) {
-        console.log('data', data)
         return data;
       } else {
         throw new Error("Error: No results found");

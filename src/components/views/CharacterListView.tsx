@@ -8,10 +8,9 @@ import LoadMore from "../utils/LoadMore";
 // Props
 interface CharacterListProps {
   data: Array<CharacterResponseFromApi>;
-  loadMoreCharacters: () => void;
 }
 
-const CharacterList = ({ data, loadMoreCharacters }: CharacterListProps) => {
+const CharacterList = ({ data }: CharacterListProps) => {
   return (
     <>
       <div className="grid xs:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-12 md:gap-8 md:gap-y-16 mt-20">
@@ -34,7 +33,7 @@ const CharacterList = ({ data, loadMoreCharacters }: CharacterListProps) => {
           );
         })}
       </div>
-      <LoadMore loadMoreCharacters={loadMoreCharacters} />
+      <LoadMore />
     </>
   );
 };
