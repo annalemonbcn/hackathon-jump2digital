@@ -83,7 +83,7 @@ const SearchBar = () => {
       />
       <button
         onClick={handleResetClick}
-        className={`absolute top-0 right-0 h-10 py-2 px-4 cursor-pointer text-sm ${query.length === 0 ? 'opacity-50 cursor-not-allowed' : null}`}
+        className={`absolute top-0 right-0 h-10 py-2 px-4 text-sm ${query.length === 0 ? "opacity-50 cursor-not-allowed" : "cursor-pointer"}`}
         disabled={query.length === 0}
       >
         Reset search
