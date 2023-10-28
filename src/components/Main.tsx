@@ -1,3 +1,6 @@
+// Hooks
+import { useState } from 'react';
+
 // Routing
 import { Routes, Route } from "react-router-dom";
 
@@ -7,6 +10,13 @@ import SearchContainer from "./containers/SearchContainer";
 import SingleCharacterContainer from "./containers/SingleCharacterContainer";
 
 const Main = () => {
+
+  const [searchActive, setSearchActive] = useState(false);
+
+  const handleSearchClick = () => {
+    setSearchActive(true);
+  };
+
   return (
     <main className="mt-10 pb-20">
       <Routes>
@@ -14,7 +24,9 @@ const Main = () => {
           path="/"
           element={
             <>
+              {/* <SearchContainer onSearch={handleSearchClick} /> */}
               <SearchContainer />
+              {/* <CharacterListContainer searchActive={searchActive} /> */}
               <CharacterListContainer />
             </>
           }

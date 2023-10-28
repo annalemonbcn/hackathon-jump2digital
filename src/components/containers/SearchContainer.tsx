@@ -1,6 +1,11 @@
 // Components
 import SearchBar from "../utils/SearchBar";
 
+// Props
+interface SearchContainerProps {
+  onSearch: () => void
+}
+
 const SearchContainer = () => {
   return (
     <>

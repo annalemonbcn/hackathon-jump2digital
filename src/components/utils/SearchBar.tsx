@@ -1,5 +1,5 @@
 // Hooks
-import { useState, useContext, useEffect } from "react";
+import { useState, useContext } from "react";
 
 // Toast
 import { toast } from "sonner";
@@ -10,9 +10,15 @@ import { getAllCharacters } from "../../api/services/getAllCharacters";
 
 // Context
 import { CharactersContext } from "../../api/context/CharactersProvider";
+import { SearchContext } from "../../api/context/SearchProvider";
 
 // Icon
 import SearchIcon from "./svg/SearchIcon";
+
+// Props
+interface SearchBarProps {
+  onSearch: () => void;
+}
 
 const SearchBar = () => {
   // State
@@ -20,9 +26,15 @@ const SearchBar = () => {
 
   // Context
   const charactersContext = useContext(CharactersContext);
+  const searchContext = useContext(SearchContext);
 
   // Actions
   const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    console.log("handleInputChange")
+    // Set searchActive state to true
+    searchContext?.searchbarClicked();
+
+    // Query
     const newQuery = event.target.value;
     setQuery(newQuery);
 
