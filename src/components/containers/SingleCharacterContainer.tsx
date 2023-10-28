@@ -15,6 +15,7 @@ import { getSingleCharacter } from "../../api/services/getSingleCharacter";
 
 // Components
 import SingleCharacterView from "../views/SingleCharacterView";
+import Loader from "../utils/Loader";
 
 const SingleCharacterContainer = () => {
   // State
@@ -41,7 +42,7 @@ const SingleCharacterContainer = () => {
   if (character) {
     return <SingleCharacterView data={character} />;
   }
-  return <p>Loading...</p>;
+  return <Loader />;
 };
 
 export default SingleCharacterContainer;

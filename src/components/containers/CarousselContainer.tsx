@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 
 // Components
 import CarousselView from "../views/CarousselView";
+import Loader from "../utils/Loader";
 
 // Types
 import { CharacterResponseFromApi } from "../../types";
@@ -51,7 +52,7 @@ const CarousselContainer = (props: CarousselContainerProps) => {
           <CarousselView data={relatedChars} />
         )
       ) : (
-        <p>Loading...</p>
+        <Loader />
       )}
     </div>
   );

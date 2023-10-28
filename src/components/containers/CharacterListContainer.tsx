@@ -6,6 +6,7 @@ import { CharacterResponseFromApi } from "../../types";
 
 // Components
 import CharacterListView from "../views/CharacterListView";
+import Loader from "../utils/Loader";
 
 // Context
 import { CharactersContext } from "../../api/context/CharactersProvider";
@@ -28,7 +29,7 @@ const CharacterListContainer = () => {
   if (characters.length > 0) {
     return <CharacterListView data={characters} />;
   }
-  return <p>Loading...</p>;
+  return <Loader />;
 };
 
 export default CharacterListContainer;
