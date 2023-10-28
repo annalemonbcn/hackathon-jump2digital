@@ -15,10 +15,6 @@ import { SearchContext } from "../../api/context/SearchProvider";
 // Icon
 import SearchIcon from "./svg/SearchIcon";
 
-// Props
-interface SearchBarProps {
-  onSearch: () => void;
-}
 
 const SearchBar = () => {
   // State

@@ -23,7 +23,6 @@ const SearchProvider = (props: SearchProviderProps) => {
 
   // Actions
   const searchbarClicked = () => {
-    console.log("searchbar clicked");
     setSearchActive(true);
   };
 
