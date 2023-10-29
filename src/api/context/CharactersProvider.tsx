@@ -34,7 +34,7 @@ const CharactersProvider = (props: CharactersProviderProps) => {
   // State
   const [allCharacters, setAllCharacters] =
     useState<CharacterResponseFromApi[]>();
-  const [page, setPage] = useState(1);
+  const [page, setPage] = useState<number>(1);
 
   useEffect(() => {
     loadCharacters();

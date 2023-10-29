@@ -43,7 +43,8 @@ const CharacterListView = ({ data }: CharacterListProps) => {
         })}
       </div>
       {/* Load more button */}
-      {!searchContext?.searchActive ? <LoadMore /> : null}
+      {/* {!searchContext?.searchActive ? <LoadMore /> : null} */}
+      <LoadMore searchActive={searchContext?.searchActive} />
     </>
   );
 };
