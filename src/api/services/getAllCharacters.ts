@@ -4,6 +4,7 @@ import { ResponseFromApi } from "../../types";
 /**
  * fetchCharacters *
  * Fetch request to rick and morty api
+ * @param url
  * @returns response in json format
  */
 const fetchCharacters = (url: string): Promise<ResponseFromApi> => {
@@ -27,13 +28,28 @@ const fetchCharacters = (url: string): Promise<ResponseFromApi> => {
  * Exec fetch request and return the data
  * @returns res.results
  */
-export const getAllCharacters = (url: string) => {
+export const getAllCharacters = () => {
+  const url = "https://rickandmortyapi.com/api/character"
   return fetchCharacters(url)
-    .then((res) => {
-      return res.results;
-    })
+    .then((res) => res.results)
     .catch((error) => {
       console.error(`Error in getAllCharacters: ${error}`);
       throw error;
     });
 };
+
+/**
+ * getAllCharactersByPage *
+ * Exec fetch request and return the data filtered by page
+ * @param page 
+ * @returns 
+ */
+export const getAllCharactersByPage = (page: string) => {
+  const url = `https://rickandmortyapi.com/api/character?page=${page}`;
+  return fetchCharacters(url)
+    .then((res) => res.results)
+    .catch((error) => {
+      console.error(`Error in loadMoreCharacters: ${error}`);
+      throw error;
+    })
+}

@@ -4,6 +4,7 @@ import { CharacterResponseFromApi } from "../../types";
 /**
  * fetchCharacter *
  * Fetch single character from api
+ * @param id 
  * @returns response in json format
  */
 const fetchCharacter = (id: string): Promise<CharacterResponseFromApi> => {
@@ -25,6 +26,7 @@ const fetchCharacter = (id: string): Promise<CharacterResponseFromApi> => {
 /**
  * getSingleCharacter *
  * Exec fetch request and return the data
+ * @param id 
  * @returns res
  */
 export const getSingleCharacter = (id: string) => {

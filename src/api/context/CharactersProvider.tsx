@@ -8,13 +8,16 @@ import { toast } from "sonner";
 import { CharacterResponseFromApi } from "../../types";
 
 // Services
-import { getAllCharacters } from "../services/getAllCharacters";
-
+import {
+  getAllCharacters,
+  getAllCharactersByPage,
+} from "../services/getAllCharacters";
 
 // Props types
 interface CharactersContextProps {
   allCharacters: Array<CharacterResponseFromApi>;
   setAllCharacters: (characters: CharacterResponseFromApi[]) => void;
+  loadCharacters: () => void
   loadMoreCharacters: () => void;
 }
 
@@ -31,29 +34,29 @@ const CharactersProvider = (props: CharactersProviderProps) => {
   // State
   const [allCharacters, setAllCharacters] =
     useState<CharacterResponseFromApi[]>();
-  const [page, setPage] = useState(1);
+  const [page, setPage] = useState<number>(1);
 
   useEffect(() => {
-    // Call the getAllCharacters method and set the processed response
-    getAllCharacters("https://rickandmortyapi.com/api/character")
+    loadCharacters();
+  }, []);
+
+  // Actions
+  const loadCharacters = (): void => {
+    getAllCharacters()
       .then((characters) => {
         setAllCharacters(characters);
-        toast.success("Characters loaded! Have fun :)");
       })
       .catch((error) => {
         console.error("Error loading characters:", error);
         toast.error("Error loading characters");
       });
-  }, []);
+  };
 
-  // Actions
   const loadMoreCharacters = (): void => {
-    const nextPage: string = `https://rickandmortyapi.com/api/character?page=${
-      page + 1
-    }`;
+    const nextPage = (page + 1).toString();
 
     // Call the getAllCharacters method
-    getAllCharacters(nextPage)
+    getAllCharactersByPage(nextPage)
       .then((newCharacters) => {
         // Set the newCharacters but preserving the prevCharacters
         setAllCharacters((prevCharacters) => [
@@ -72,6 +75,7 @@ const CharactersProvider = (props: CharactersProviderProps) => {
   const charactersContextValue: CharactersContextProps = {
     allCharacters: allCharacters || [],
     setAllCharacters,
+    loadCharacters,
     loadMoreCharacters,
   };
 
