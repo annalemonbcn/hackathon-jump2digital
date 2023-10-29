@@ -6,8 +6,14 @@ import { ResponseFromApi } from "../../types";
  * Fetch request by concrete name to rick and morty api
  * @returns response in json format
  */
-const fetchCharactersByName = (query: string): Promise<ResponseFromApi> => {
-  return fetch(`https://rickandmortyapi.com/api/character/?name=${query}`)
+/**
+ * fetchCharactersByName *
+ * Fetch request by concrete name to rick and morty api
+ * @param url
+ * @returns response in json format
+ */
+const fetchCharactersByName = (url: string): Promise<ResponseFromApi> => {
+  return fetch(url)
     .then((res) => res.json())
     .then((data) => {
       if (data.results && data.results.length > 0) {
@@ -22,18 +28,36 @@ const fetchCharactersByName = (query: string): Promise<ResponseFromApi> => {
     });
 };
 
+
 /**
  * getAllCharactersByName *
- * Exec fetch request and return the data
+ * Exec fetch request and return the data filtered by name
+ * @param query
  * @returns res.results
  */
 export const getAllCharactersByName = (query: string) => {
-  return fetchCharactersByName(query)
-    .then((res) => {
-      return res.results;
-    })
+  const url = `https://rickandmortyapi.com/api/character/?name=${query}`;
+  return fetchCharactersByName(url)
+    .then((res) => res.results)
     .catch((error) => {
       console.error(`Error in getAllCharactersByName: ${error}`);
       throw error;
     });
 };
+
+/**
+ * getAllCharactersByNameAndPage *
+ * Exec fetch request and return the data filtered by name and page
+ * @param query 
+ * @param page 
+ * @returns res.results
+ */
+export const getAllCharactersByNameAndPage = (query: string, page: string) => {
+  const url = `https://rickandmortyapi.com/api/character/?page=${page}&name=${query}`;
+  return fetchCharactersByName(url)
+    .then((res) => res.results)
+    .catch((error) => {
+      console.error(`Error in loadMoreCharactersByName: ${error}`);
+      throw error;
+    })
+}

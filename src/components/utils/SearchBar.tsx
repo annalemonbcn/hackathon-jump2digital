@@ -5,7 +5,7 @@ import { useState, useContext, useEffect } from "react";
 import { toast } from "sonner";
 
 // MUI Icon
-import HighlightOffIcon from '@mui/icons-material/HighlightOff';
+import HighlightOffIcon from "@mui/icons-material/HighlightOff";
 
 // Services
 import { getAllCharactersByName } from "../../api/services/getCharactersByName";
@@ -18,7 +18,6 @@ import { SearchContext } from "../../api/context/SearchProvider";
 // Icon
 import SearchIcon from "./svg/SearchIcon";
 
-
 const SearchBar = () => {
   // State
   const [query, setQuery] = useState<string>("");
@@ -29,11 +28,11 @@ const SearchBar = () => {
 
   useEffect(() => {
     // Set search state to false everytime query.length === 0 so the "Load more" button can appear
-    if(query.length === 0){
-      searchContext?.setSearchState(false)
+    if (query.length === 0) {
+      searchContext?.setSearchState(false);
     }
-  }, [query])
-  
+  }, [query]);
+
   const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     // Set searchActive state to true
     searchContext?.setSearchState(true);
@@ -60,17 +59,15 @@ const SearchBar = () => {
   };
 
   const handleResetClick = () => {
-    getAllCharacters("https://rickandmortyapi.com/api/character")
-      .then((characters) => {
-        // Set allCharacters to state
-        charactersContext?.setAllCharacters(characters);
-        // Reset query
-        setQuery("")
-      })
-      .catch((error) => {
-        console.error("Error loading characters:", error);
-        toast.error("Error loading characters");
-      });
+    try {
+      // Set allCharacters to state
+      charactersContext?.loadCharacters();
+      // Reset query
+      setQuery("");
+    } catch (error) {
+      console.error("Error loading characters:", error);
+      toast.error("Error loading characters");
+    }
   };
 
   return (
@@ -84,10 +81,14 @@ const SearchBar = () => {
       />
       <button
         onClick={handleResetClick}
-        className={`absolute top-0 right-0 h-10 py-2 px-4 text-sm ${query.length === 0 ? "opacity-50 cursor-not-allowed" : "cursor-pointer"}`}
+        className={`absolute top-0 right-0 h-10 py-2 px-4 text-sm ${
+          query.length === 0
+            ? "opacity-50 cursor-not-allowed"
+            : "cursor-pointer"
+        }`}
         disabled={query.length === 0}
       >
-        <HighlightOffIcon style={{ color: '#9CA3AF' }}/>
+        <HighlightOffIcon style={{ color: "#9CA3AF" }} />
       </button>
       <SearchIcon />
     </div>
