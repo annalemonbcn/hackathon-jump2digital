@@ -70,21 +70,6 @@ const CharactersProvider = (props: CharactersProviderProps) => {
         console.error("Error loading more characters:", error);
         toast.error("Error loading characters");
       });
-
-    // Call the getAllCharacters method
-    // getAllCharacters(nextPage)
-    //   .then((newCharacters) => {
-    //     // Set the newCharacters but preserving the prevCharacters
-    //     setAllCharacters((prevCharacters) => [
-    //       ...(prevCharacters || []),
-    //       ...newCharacters,
-    //     ]);
-    //     setPage(page + 1);
-    //   })
-    //   .catch((error) => {
-    //     console.error("Error loading more characters:", error);
-    //     toast.error("Error loading characters");
-    //   });
   };
 
   // Provider value

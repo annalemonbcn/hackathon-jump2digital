@@ -60,7 +60,7 @@ const SearchBar = () => {
 
   const handleResetClick = () => {
     try {
-      // Set allCharacters to state
+      // Set allCharacters to initial state
       charactersContext?.loadCharacters();
       // Reset query
       setQuery("");
