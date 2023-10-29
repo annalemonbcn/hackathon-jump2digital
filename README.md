@@ -1,46 +1,101 @@
-# Getting Started with Create React App
+<h1 align="center">Jump2Digital - Anna Esteve - Hackathon 2023</h1> <br>
+<p align="center">
+  <img alt="rick and morty mockup" title="anna esteve hackathon jump2digital" src="https://firebasestorage.googleapis.com/v0/b/lemoninfilm.appspot.com/o/RM_01.jpg?alt=media&token=3b6a997a-ff5f-4e9c-aa25-1a22f70deeb5&_gl=1*nvfijw*_ga*OTQ3NjQ5NTE3LjE2OTM0ODAxMjY.*_ga_CW55HF8NVT*MTY5ODYxMTQwNy43OS4xLjE2OTg2MTMyNDUuNDMuMC4w" width="600">
+</p>
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+<div align="center">
+  <img src="https://www.svgrepo.com/show/327388/logo-react.svg" width="60" height="60">
+  <img src="https://www.svgrepo.com/show/374146/typescript-official.svg" width="60" height="60">
+  <img src="https://www.svgrepo.com/show/354430/tailwindcss.svg" width="60" height="60">
+  <img src="https://www.svgrepo.com/show/354048/material-ui.svg" width="60" height="60">
+</div>
+<p align="center"> Built with React, Typescript, Tailwind and more.</p>
 
-## Available Scripts
+## 🖥️ Demo
 
-In the project directory, you can run:
+Here is a working live demo : https://hackathon-annaesteve-jump2digital.vercel.app/
 
-### `npm start`
+## Table of Contents
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+- [Introduction](#introduction)
+- [Features](#features)
+- [Built with](#built-with)
+- [Getting started](#getting-started)
+- [Final conclusions](#final-conclusions)
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+<!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
-### `npm test`
+<a name="introduction"></a>
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## 📋 Introduction
 
-### `npm run build`
+This exercise has been done based on Jump2Digital's requirements to be able to participate in the 2023 hackathon.
+This has been coded following the **minimum requirements** of the test exercise: **connection** to the Rick & Morty **API**, CSS for **styling** and it must be a **responsive** app.
+Also, I ended developing **2 extra points**: the fact that there is a **real time searchbar**, and the **infinite loading**.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+**Responsive design**
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+<p align="center">
+  <img src = "https://firebasestorage.googleapis.com/v0/b/lemoninfilm.appspot.com/o/RM_02.jpg?alt=media&token=5c768994-0967-4c17-be55-352e0a4a8c40&_gl=1*1p6maqj*_ga*OTQ3NjQ5NTE3LjE2OTM0ODAxMjY.*_ga_CW55HF8NVT*MTY5ODYxMTQwNy43OS4xLjE2OTg2MTMyNzQuMTQuMC4w" width=700>
+</p>
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+<a name="features"></a>
 
-### `npm run eject`
+## 💡 Features
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+This project has some interesting features that I want to highlight:
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+#### Fetch data
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+- All the info related to the characters (name, image, gender, etc) is taken from the <a href="https://rickandmortyapi.com/">Rick & Morty API</a>.
+- This info is obtained through _fetch API_ and _promises_ methods
+- It was necessary to consult the documentation to find the suitable methods for getting the data. For more information, follow this link:
+  https://rickandmortyapi.com/documentation
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+### Real time search
 
-## Learn More
+- The search engine **works in real time**. As you write in the input field, a request to the API is executed with the search parameter as a query.
+- The response is immediately rendered in the app.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+### Infinite loading
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+- Since the API returns 20 characters each time, it is necessary a button or a functionality to load more characters.
+- I decided to implement a button because I think is better for the user to decide when to load more characters.
+
+<a name="built-with"></a>
+
+## 🛠️ Built with
+
+List of technologies used to develop this app:
+
+- <a href="https://react.dev/">React Js</a>
+- <a href="https://create-react-app.dev/">Create React App</a> for starting the file system
+- I choose <a href="https://www.typescriptlang.org/">Typescript</a> just to add the app an extra strength 
+- <a href="https://tailwindcss.com/">Tailwind CSS</a> for styling
+- <a href="https://reactrouter.com/en/main">React-router-dom</a> for everything related to routing and matching URLs
+- <a href="https://mui.com/">Material UI</a> is been used to implement some functionalities, like icons or tooltips
+- Since it is a list of a TV show characters, I used the <a href="https://swiperjs.com/">Swiper</a> library for showing a **caroussel of related characters**
+- The <a href="https://sonner.emilkowal.ski/">Sonner library</a> is used for **toast notifications**
+
+
+<a name="getting-started"></a>
+
+## 🔨 Getting started
+
+- Fork the repo
+- Clone the repo: `git clone https://github.com/annalemonbcn/hackathon-jump2digital`
+- Navigate into the project files
+- Open with VSC
+- Install dependencies: `npm i`
+- Run the app: `npm start`
+- Open the live in your port: http://localhost:3000/
+- Or check the demo: https://hackathon-annaesteve-jump2digital.vercel.app/
+- Enjoy :)
+
+<a name="final-conclusions"></a>
+
+## 🙏🏻 Final conclusions
+
+It has been fun navigating and listing all the characters on the TV show :)
+My favorite is Pickle Rick! 🥒
+Check it out: https://hackathon-annaesteve-jump2digital.vercel.app/id/265
