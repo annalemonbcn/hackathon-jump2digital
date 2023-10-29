@@ -17,7 +17,8 @@ import {
 interface CharactersContextProps {
   allCharacters: Array<CharacterResponseFromApi>;
   setAllCharacters: (characters: CharacterResponseFromApi[]) => void;
-  loadCharacters: () => void
+  setPage: (num: number) => void;
+  loadCharacters: () => void;
   loadMoreCharacters: () => void;
 }
 
@@ -43,7 +44,7 @@ const CharactersProvider = (props: CharactersProviderProps) => {
   // Actions
   const loadCharacters = (): void => {
     getAllCharacters()
-      .then((characters) => {
+      .then((characters: CharacterResponseFromApi[]) => {
         setAllCharacters(characters);
       })
       .catch((error) => {
@@ -63,6 +64,7 @@ const CharactersProvider = (props: CharactersProviderProps) => {
           ...(prevCharacters || []),
           ...newCharacters,
         ]);
+        // Set +1 page
         setPage(page + 1);
       })
       .catch((error) => {
@@ -75,6 +77,7 @@ const CharactersProvider = (props: CharactersProviderProps) => {
   const charactersContextValue: CharactersContextProps = {
     allCharacters: allCharacters || [],
     setAllCharacters,
+    setPage,
     loadCharacters,
     loadMoreCharacters,
   };

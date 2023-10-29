@@ -69,8 +69,10 @@ const SearchBar = () => {
       setQueryAux("");
       // Reset query on provider
       searchContext?.setQuery("");
-      // Reset page on provider
+      // Reset page on searchProvider
       searchContext?.setPage(1);
+      // Reset page on charactersProvider
+      charactersContext?.setPage(1);
     } catch (error) {
       console.error("Error loading characters:", error);
       toast.error("Error loading characters");
