@@ -45,7 +45,6 @@ const CharactersProvider = (props: CharactersProviderProps) => {
     getAllCharacters()
       .then((characters) => {
         setAllCharacters(characters);
-        toast.success("Characters loaded! Have fun :)");
       })
       .catch((error) => {
         console.error("Error loading characters:", error);

@@ -16,9 +16,12 @@ const LoadMore = ({ searchActive }: LoadMoreProps) => {
   const searchContext = useContext(SearchContext);
 
   const handleLoad = (): void => {
+    // Check if searchbar is being used or not
     if(!searchActive){
+      // If searchbar is not used, load more characters from characters api endpoint
       charactersContext?.loadMoreCharacters();
     } else {
+      // If searchbar is used, load more characters from name and query api endpoint
       searchContext?.loadMoreCharactersByNameAndPage()
     }
   };
