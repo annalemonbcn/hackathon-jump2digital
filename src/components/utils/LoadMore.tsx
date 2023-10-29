@@ -10,7 +10,6 @@ interface LoadMoreProps {
 }
 
 const LoadMore = ({ searchActive }: LoadMoreProps) => {
-  console.log("searchActive", searchActive);
   // Context
   const charactersContext = useContext(CharactersContext);
   const searchContext = useContext(SearchContext);
