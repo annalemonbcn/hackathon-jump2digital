@@ -42,9 +42,9 @@ const SingleCharacterView = ({ data }: SingleCharacterViewProps) => {
                 <span>❓</span>
               )}
             </Tooltip>
-            {data.name}
+            {" "}{data.name}
           </p>
-          <img className="w-full rounded-md" src={data.image} alt={data.name} />
+          <img className="w-full rounded-md border-2 border-amber-400" src={data.image} alt={data.name} />
         </div>
         <div className="w-full md:w-2/4 lg:w-1/3 relative">
           <div className="flex flex-col gap-2 bg-white p-4 rounded-md border-2 border-grey-dark">
